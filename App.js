@@ -1,11 +1,11 @@
 import React from 'react';
-import MainPage from './Components/MainPage.js'
-import { StyleSheet, Text, View } from 'react-native';
+import Navigation from './Navigation/Navigation'
+import MainPage from './Components/MainPage';
 
-export default function App() {
-  return (
-    <View>
-      <MainPage/>
-    </View>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <Navigation/>
+    )
+  }
 }
