@@ -1,16 +1,54 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { Alert, StyleSheet, Text, View, TouchableOpacity, Image, Button } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
 
 class MainPage extends React.Component {
+
+    static navigationOptions = {
+        header: null
+    };
+
+    _displayQrCodeScanner = () => {
+        this.props.navigation.navigate('QrCodeScanner')
+      }
+
+    _displayMyPrescriptions = () => {
+        this.props.navigation.navigate('MyPrescriptions')
+    }
+
     render() {
         return (
             <View style = {styles.main_container}>
-                <LinearGradient colors={['lightgreen', '#87cefa']} style={{ padding: 30, alignItems: 'center'}}>
+                <LinearGradient colors={['#2bb554', '#00adee']} style={{ padding: 30, alignItems: 'center'}}>
                     <Text style={styles.main_title}>EaseMedic</Text>
                 </LinearGradient>
-                <Button title="Press me" disabled onPress={() => Alert.alert('Cannot press this one')}/>
-                <Button title='SCAN QR CODE' color='#87cefa' onPress={() => Alert.alert('Cannot press this one')}/>
+                <View style = {styles.button_container}>
+                <TouchableOpacity onPress={() => this._displayQrCodeScanner()}>
+                        <Image
+                            style={styles.button_style}
+                            source={require('../Ressources/QrLogo.png')}>
+                        </Image>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => Alert.alert("Work in progress")}>
+                        <Image
+                            style={styles.button_style}
+                            source={require('../Ressources/PharmaLogo.png')}>
+                        </Image>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => Alert.alert("Work in progress")}>
+                        <Image
+                            style={styles.button_style}
+                            source={require('../Ressources/RappelLogo.png')}>
+                        </Image>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this._displayMyPrescriptions()}>
+                        <Image
+                            style={styles.button_style}
+                            source={require('../Ressources/prescriptions.png')}>
+                        </Image>
+                    </TouchableOpacity>
+                </View>
             </View>    
         )
     }
@@ -18,14 +56,24 @@ class MainPage extends React.Component {
 
 const styles = StyleSheet.create({
     main_container: {
-        marginTop: 24
+        flex: 1
     },
-    main_title: {
-        fontSize: 30,
-        marginTop: -17,
-        color: 'white'
-    }
+    button_container: {
+        flex: 1,
+        alignSelf: 'center',
+        marginTop: 10,
+    },
+    button_style: {
+        alignSelf: 'center'
+        marginTop: 24
+        color: 'white',
+        textAlign: 'center'
+    },
+    container: {
+        flex: 1,
+        paddingTop: 10,
+        backgroundColor: '#000',
+      },
 })
 
-  
 export default MainPage
