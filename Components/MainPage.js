@@ -65,10 +65,7 @@ const styles = StyleSheet.create({
     },
     button_style: {
         alignSelf: 'center'
-    },
-    main_title: {
-        fontSize: 30,
-        marginTop: -17,
+        marginTop: 24
         color: 'white',
         textAlign: 'center'
     },
@@ -79,5 +76,4 @@ const styles = StyleSheet.create({
       },
 })
 
-  
 export default MainPage
